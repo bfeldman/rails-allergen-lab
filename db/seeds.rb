@@ -11,7 +11,7 @@
 }
 
 50.times {
-    Recipe.create(title: Faker::Food.unique.dish)
+    Recipe.create!(title: Faker::Food.unique.dish, user_id: User.all.sample(1)[0].id)
 }
 
 150.times {
@@ -20,7 +20,7 @@
 
 Recipe.all.each do |recipe|
     3.times {
-        RecipeIngredient.create(recipe_id: recipe.id, ingredient_id: Ingredient.all.sample(1).id)
+        RecipeIngredient.create(recipe_id: recipe.id, ingredient_id: Ingredient.all.sample(1)[0].id)
     }
 end
 
