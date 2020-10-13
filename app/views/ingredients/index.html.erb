@@ -1,7 +1,9 @@
 <h1>Ingredients</h1>
 
+<% ranked_ingredients = @ingredients.sort_by{|i| -i.allergy_count} %>
+
 <ul>
-<% @ingredients.each do |ingr| %>
-    <li><%= link_to ingr.name, ingredient_path(ingr) %></li>
-<% end %>
+    <% ranked_ingredients.each do |ingr| %>
+        <li><%= link_to "#{ingr.name} (#{ingr.allergy_count} allergic)", ingredient_path(ingr) %></li>
+    <% end %>
 </ul>

@@ -3,8 +3,10 @@
 
 <%= button_to "New Recipe", new_recipe_path, method: 'get' %>
 
+<% ranked_recipes = @recipes.sort_by{|r| -r.ingredients.count} %>
+
 <ul>
-    <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+    <% ranked_recipes.each do |recipe| %>
+        <li><%= link_to "#{recipe.title} (#{recipe.ingredients.count} ingredients)", recipe_path(recipe) %></li>
     <% end %>
 </ul>

@@ -7,6 +7,3 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.find(params[:id])
   end
 end
-
-
-# Ingredient.all.map {|ingr| Allergen.all.count{|a| a.ingredient_id == ingr.id } }
