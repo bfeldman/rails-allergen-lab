@@ -1,2 +1,7 @@
-<h1>Ingredients#show</h1>
-<p>Find me in app/views/ingredients/show.html.erb</p>
+<h1><%= @ingredient.name %></h1>
+
+<ul>
+<% @ingredient.recipes.each do |rec| %>
+    <li><%= link_to rec.title, recipe_path(rec) %></li>
+<% end %>
+</ul>
